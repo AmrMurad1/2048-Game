@@ -4,9 +4,7 @@ import game2048rendering.Side;
 import static game2048logic.MatrixUtils.rotateLeft;
 import static game2048logic.MatrixUtils.rotateRight;
 
-/**
- * @author  Josh Hug
- */
+
 public class GameLogic {
 
     /** Moves the given tile up as far as possible, subject to the minR constraint.
@@ -20,17 +18,25 @@ public class GameLogic {
      *              if no merge occurs, then return 0.
      */
     public static int moveTileUpAsFarAsPossible(int[][] board, int r, int c, int minR) {
-        // TODO: Fill this in in tasks 2, 3, 4
+        if (board[r][c] == 0) return 0;
+
+        int value = board[r][c];
+
+        while (r > minR && board[r -1][c] == 0){
+            board[r -1][c] = board[r][c];
+            board[r][c] = 0;
+            r--;
+        }
+
+        if (r > minR && board[r - 1] [c] == value){
+            board[r - 1] [c] *= 2;
+            board[r][c] = 0;
+            return 1 + (r - 1);
+        }
         return 0;
     }
 
-    /**
-     * Modifies the board to simulate the process of tilting column c
-     * upwards.
-     *
-     * @param board     the current state of the board
-     * @param c         the column to tilt up.
-     */
+
     public static void tiltColumn(int[][] board, int c) {
         // TODO: fill this in in task 5
 
