@@ -22,25 +22,31 @@ public class GameLogic {
 
         int value = board[r][c];
 
-        while (r > minR && board[r -1][c] == 0){
-            board[r -1][c] = board[r][c];
+        while (r > minR && board[r - 1][c] == 0){
+            board[r - 1][c] = board[r][c];
             board[r][c] = 0;
             r--;
         }
 
-        if (r > minR && board[r - 1] [c] == value){
-            board[r - 1] [c] *= 2;
+        if (r > minR && board[r - 1][c] == value){
+            board[r - 1][c] *= 2;
             board[r][c] = 0;
-            return 1 + (r - 1);
+            return (r - 1) + 1;  // Return position of merged tile
         }
         return 0;
     }
 
 
     public static void tiltColumn(int[][] board, int c) {
-        // TODO: fill this in in task 5
+      int minR = 0;
 
-        return;
+      for (int r = 0; r < board.length; r++){
+          if (board[r][c] != 0){
+              int result = moveTileUpAsFarAsPossible(board, r, c, minR);
+              if (result != 0)
+                  minR = result;
+          }
+      }
     }
 
     /**

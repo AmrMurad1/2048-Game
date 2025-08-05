@@ -5,4 +5,5 @@
 # Ignore compiled class files and build outputs
 /out/
 
-tests/
+tests/tester2048/
+
