@@ -49,14 +49,11 @@ public class GameLogic {
       }
     }
 
-    /**
-     * Modifies the board to simulate tilting all columns upwards.
-     *
-     * @param board     the current state of the board.
-     */
+
     public static void tiltUp(int[][] board) {
-        // TODO: fill this in in task 6
-        return;
+        for (int i = 0; i < board[0].length; i++){
+            tiltColumn(board, i);
+        }
     }
 
     /**
